@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cash Flow Clarity — Know Exactly Where Your Money Goes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* PASTE YOUR STRIPE LINK: find YOUR_STRIPE_LINK and replace */
+:root {
+  --paper:#F6F1E8; --cream:#EDE7D9; --cream-dark:#E2D9C8;
+  --ink:#0C0C0A; --ink-soft:#1A1A18;
+  --green:#1B6642; --green-light:#2E8A59; --green-mist:#D2E8D9; --green-pale:#EAF3ED;
+  --gold:#B8922A; --gold-light:#D4AE4E; --gold-pale:#F5EDD6;
+  --muted:#5C5448; --rule:#C9BFA8; --rule-light:#DDD6C6;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1160px;margin:0 auto;padding:0 60px;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+/* ── Topbar ── */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(246,241,232,.96);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
+.topbar-inner{max-width:1160px;margin:0 auto;padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.brand-name{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--green);letter-spacing:-.02em;}
+.brand-tag{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-top:1px;}
+.nav-right{display:flex;align-items:center;gap:28px;}
+.nav-link{font-size:.82rem;font-weight:500;color:var(--muted);transition:color .15s;}
+.nav-link:hover{color:var(--ink);}
+.nav-cta{background:var(--green);color:#fff;padding:10px 22px;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;}
+.nav-cta:hover{background:var(--green-light);}
+/* ── Btn ── */
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:17px 36px;font-family:var(--sans);font-size:.9rem;font-weight:600;letter-spacing:.04em;border:none;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-primary:hover{background:var(--green-light);transform:translateY(-2px);}
+/* ── Eyebrow ── */
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
+.eyebrow::after{content:'';width:48px;height:1px;background:var(--gold);}
+/* ── Hero ── */
+.hero{display:grid;grid-template-columns:55fr 45fr;min-height:calc(100vh - 64px);border-bottom:1px solid var(--rule);}
+.hero-left{padding:96px 60px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--rule);position:relative;overflow:hidden;}
+.hero-bg{position:absolute;bottom:-40px;left:40px;font-family:var(--serif);font-size:380px;font-weight:700;color:#E8E2D6;line-height:1;pointer-events:none;user-select:none;z-index:0;}
+.hero-content{position:relative;z-index:1;}
+.hero-headline{font-family:var(--serif);font-size:clamp(3rem,5vw,4.6rem);font-weight:700;line-height:1.02;letter-spacing:-.03em;margin-bottom:6px;}
+.h-plain{color:var(--ink);}
+.h-accent{color:var(--green);font-style:italic;}
+.hero-rule{width:56px;height:3px;background:var(--gold);margin:28px 0;}
+.hero-sub{font-size:1.08rem;color:var(--muted);max-width:460px;font-weight:300;line-height:1.8;margin-bottom:40px;}
+.hero-sub strong{color:var(--ink);font-weight:500;}
+.proof{display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--muted);margin-top:12px;}
+.proof-dot{width:4px;height:4px;border-radius:50%;background:var(--rule);}
+.hero-right{background:var(--cream);padding:80px 56px;display:flex;flex-direction:column;justify-content:center;}
+.stat-item{padding:32px 0;border-bottom:1px solid var(--rule);}
+.stat-item:first-child{padding-top:0;}
+.stat-item:last-child{border-bottom:none;padding-bottom:0;}
+.stat-num{font-family:var(--serif);font-size:4.2rem;font-weight:700;color:var(--green);line-height:1;letter-spacing:-.04em;margin-bottom:8px;}
+.stat-label{font-size:.86rem;color:var(--muted);line-height:1.6;}
+.stat-src{font-size:.67rem;color:var(--rule);margin-top:5px;font-style:italic;}
+/* ── Pain ── */
+.pain-section{background:var(--ink-soft);color:#F0EBE0;padding:100px 0;}
+.pain-section .eyebrow{color:var(--gold-light);}
+.pain-section .eyebrow::after{background:var(--gold-light);}
+.pain-top{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;margin-bottom:64px;}
+.pain-headline{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.4rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;}
+.pain-headline em{color:var(--gold-light);font-style:italic;}
+.pain-intro{font-size:.95rem;color:#7A7268;line-height:1.85;font-weight:300;}
+.pain-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#2A2A26;}
+.pain-card{background:#161614;padding:40px 32px;transition:background .2s;}
+.pain-card:hover{background:#1C1C1A;}
+.pain-num{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:#2A2A26;line-height:1;margin-bottom:16px;}
+.pain-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#F0EBE0;margin-bottom:12px;line-height:1.3;}
+.pain-body{font-size:.86rem;color:#6A6258;line-height:1.75;}
+/* ── Deliverables ── */
+.deliver-section{padding:100px 0;border-bottom:1px solid var(--rule);}
+.deliver-top{display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:start;}
+.deliver-sticky{position:sticky;top:80px;}
+.sec-ey{display:flex;align-items:center;gap:12px;font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
+.sec-ey::after{content:'';width:48px;height:1px;background:var(--gold);}
+.deliver-head{font-family:var(--serif);font-size:clamp(1.7rem,2.5vw,2.4rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:18px;}
+.deliver-intro{font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:28px;}
+.price-pill{display:inline-flex;align-items:center;gap:12px;background:var(--green-pale);border:1px solid var(--green-mist);padding:12px 18px;}
+.price-big{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:var(--green);line-height:1;}
+.price-label{font-size:.72rem;color:var(--muted);line-height:1.4;}
+.deliver-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule-light);}
+.d-item{background:var(--paper);padding:32px 28px;border-top:3px solid transparent;transition:border-color .2s,background .2s;}
+.d-item:hover{border-top-color:var(--green);background:var(--cream);}
+.d-item.bonus{background:var(--gold-pale);}
+.d-item.bonus:hover{border-top-color:var(--gold);}
+.d-tag{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.d-tag.bt{color:var(--gold);}
+.d-title{font-family:var(--serif);font-size:1.2rem;font-weight:700;margin-bottom:8px;line-height:1.2;}
+.d-desc{font-size:.83rem;color:var(--muted);line-height:1.7;}
+/* ── Process ── */
+.process-section{background:var(--cream);padding:100px 0;border-bottom:1px solid var(--rule);}
+.proc-head{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;max-width:500px;margin-bottom:48px;}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--rule);border:1px solid var(--rule);}
+.proc-step{background:var(--cream);padding:40px 28px;transition:background .2s;}
+.proc-step:hover{background:var(--paper);}
+.proc-num{font-family:var(--serif);font-size:4.5rem;font-weight:700;color:var(--rule);line-height:1;margin-bottom:18px;}
+.proc-title{font-size:.92rem;font-weight:600;margin-bottom:8px;}
+.proc-body{font-size:.82rem;color:var(--muted);line-height:1.7;}
+.proc-badge{display:inline-block;margin-top:16px;font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);background:var(--green-mist);padding:4px 10px;}
+/* ── Offer ── */
+.offer-section{background:var(--green);color:#fff;padding:72px 0;}
+.offer-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:72px;}
+.offer-ey{font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:14px;}
+.offer-headline{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:14px;}
+.offer-body{font-size:.92rem;color:rgba(255,255,255,.68);line-height:1.8;max-width:540px;font-weight:300;}
+.offer-slots{display:flex;align-items:center;gap:8px;color:var(--gold-light);font-size:.8rem;font-weight:500;margin-top:20px;}
+.slot-dot{width:7px;height:7px;border-radius:50%;background:var(--gold-light);}
+.offer-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0;}
+.btn-white{background:#fff;color:var(--green);padding:18px 36px;font-family:var(--sans);font-size:.95rem;font-weight:600;white-space:nowrap;border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-block;}
+.btn-white:hover{background:var(--cream);transform:translateY(-2px);}
+.offer-note{font-size:.73rem;color:rgba(255,255,255,.45);}
+/* ── Guarantee ── */
+.guarantee-section{padding:96px 0;border-bottom:1px solid var(--rule);}
+.g-inner{display:grid;grid-template-columns:160px 1fr;gap:56px;align-items:center;max-width:780px;margin:0 auto;}
+.g-seal{width:150px;height:150px;border-radius:50%;border:2.5px solid var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex-shrink:0;position:relative;}
+.g-seal::before{content:'';position:absolute;inset:6px;border-radius:50%;border:1px solid var(--green-mist);}
+.g-pct{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--green);line-height:1;}
+.g-word{font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px;line-height:1.4;}
+.g-title{font-family:var(--serif);font-size:1.9rem;font-weight:700;margin-bottom:12px;letter-spacing:-.02em;}
+.g-body{font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:300;}
+/* ── Pricing ── */
+.pricing-section{background:var(--ink-soft);color:#F0EBE0;padding:100px 0;}
+.pricing-section .sec-ey{color:var(--gold-light);}
+.pricing-section .sec-ey::after{background:var(--gold-light);}
+.pricing-head{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;letter-spacing:-.025em;margin-bottom:48px;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#2A2A26;border:1px solid #2A2A26;}
+.p-tier{background:#161614;padding:44px 32px;display:flex;flex-direction:column;transition:background .2s;}
+.p-tier:hover{background:#1C1C1A;}
+.p-tier.featured{background:#1A1A18;border:1px solid var(--gold);margin:-1px;position:relative;z-index:1;}
+.t-badge{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;margin-bottom:18px;align-self:flex-start;}
+.b-rec{background:var(--gold);color:var(--ink);}
+.b-start{background:#2A2A26;color:#6A6258;}
+.b-prem{background:#1E3828;color:var(--green-light);}
+.t-name{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:#F0EBE0;margin-bottom:6px;}
+.t-tag{font-size:.8rem;color:#5A5248;margin-bottom:24px;line-height:1.5;}
+.t-price{display:flex;align-items:baseline;gap:2px;margin-bottom:28px;}
+.t-cur{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#F0EBE0;}
+.t-num{font-family:var(--serif);font-size:3.8rem;font-weight:700;color:#F0EBE0;line-height:1;letter-spacing:-.04em;}
+.t-num.gold,.t-cur.gold{color:var(--gold-light);}
+.t-period{font-size:.76rem;color:#4A4A48;margin-left:4px;}
+.t-list{list-style:none;margin-bottom:32px;flex:1;}
+.t-list li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #202020;font-size:.8rem;color:#7A7268;line-height:1.5;}
+.t-list li:last-child{border-bottom:none;}
+.chk{color:var(--green-light);font-weight:700;flex-shrink:0;}
+.chk-g{color:var(--gold);font-weight:700;flex-shrink:0;}
+.chk-x{color:#2A2A26;flex-shrink:0;}
+.xt{color:#2E2E2C;}
+.t-btn{display:block;padding:15px;text-align:center;font-size:.83rem;font-weight:600;letter-spacing:.04em;cursor:pointer;border:none;font-family:var(--sans);transition:all .2s;text-decoration:none;}
+.tb-green{background:var(--green);color:#fff;}
+.tb-green:hover{background:var(--green-light);}
+.tb-ghost{background:transparent;color:#4A4A48;border:1px solid #2A2A26;}
+.tb-ghost:hover{border-color:#4A4A48;color:#7A7268;}
+.tb-gold{background:var(--gold);color:var(--ink);}
+.tb-gold:hover{background:var(--gold-light);}
+/* ── Final CTA ── */
+.final-section{padding:100px 0;border-bottom:1px solid var(--rule);position:relative;overflow:hidden;}
+.final-bg{position:absolute;right:-60px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:380px;font-weight:700;color:#E8E2D6;line-height:1;pointer-events:none;user-select:none;z-index:0;}
+.final-inner{position:relative;z-index:1;max-width:680px;}
+.final-headline{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px;}
+.final-headline em{color:var(--green);font-style:italic;}
+.final-sub{font-size:.98rem;color:var(--muted);font-weight:300;line-height:1.8;max-width:500px;margin-bottom:40px;}
+.final-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.trust-list{display:flex;flex-direction:column;gap:5px;}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);}
+.trust-mark{color:var(--green);}
+/* ── Footer ── */
+footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.footer-brand{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--green);}
+.footer-sub{font-size:.7rem;color:#9A9080;margin-top:3px;}
+.footer-legal{font-size:.7rem;color:#9A9080;max-width:500px;text-align:right;line-height:1.6;}
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .container,.topbar-inner{padding:0 32px;}
+  footer{padding:32px;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{border-right:none;border-bottom:1px solid var(--rule);padding:64px 32px;}
+  .hero-right{padding:48px 32px;}
+  .hero-bg{display:none;}
+  .pain-top{grid-template-columns:1fr;gap:28px;}
+  .pain-cards{grid-template-columns:1fr;}
+  .deliver-top{grid-template-columns:1fr;}
+  .deliver-sticky{position:static;}
+  .deliver-grid{grid-template-columns:1fr;}
+  .proc-steps{grid-template-columns:1fr 1fr;}
+  .offer-inner{grid-template-columns:1fr;gap:32px;}
+  .g-inner{grid-template-columns:1fr;text-align:center;justify-items:center;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .p-tier.featured{margin:0;}
+  .final-bg{display:none;}
+  footer{flex-direction:column;gap:16px;text-align:center;}
+  .footer-legal{text-align:center;}
+  .nav-link{display:none;}
+}
+@media(max-width:640px){
+  .hero-headline{font-size:2.6rem;}
+  .proc-steps{grid-template-columns:1fr;}
+  .final-actions{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <span class="brand-name">CashFlow Clarity&#x2122;</span>
+      <span class="brand-tag">Financial Intelligence for Small Business</span>
+    </div>
+    <div class="nav-right">
+      <a href="#how" class="nav-link">How it works</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="YOUR_STRIPE_LINK" class="nav-cta">Get My Report &#8212; $297</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-bg">&#162;</div>
+    <div class="hero-content">
+      <div class="eyebrow reveal">For Small Business Owners</div>
+      <h1 class="hero-headline reveal">
+        <span class="h-plain">Profitable</span><br>
+        <span class="h-plain">on paper.</span><br>
+        <span class="h-accent">Broke in your</span><br>
+        <span class="h-accent">bank account.</span>
+      </h1>
+      <div class="hero-rule reveal d1"></div>
+      <p class="hero-sub reveal d2">
+        Most small business owners can&#39;t explain why cash runs thin even when revenue is up. We deliver a <strong>complete cash flow analysis</strong> &#8212; 48 hours, $297 founding rate, money-back guarantee.
+      </p>
+      <div class="reveal d3">
+        <a href="YOUR_STRIPE_LINK" class="btn-primary">
+          Get My Clarity Report
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="proof">
+          <span>48-hour delivery</span><div class="proof-dot"></div>
+          <span>100% guarantee</span><div class="proof-dot"></div>
+          <span>Founding rate &#8212; $297</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-item reveal">
+      <div class="stat-num">51%</div>
+      <div class="stat-label">of small businesses report uneven or unpredictable cash flow as a top financial challenge</div>
+      <div class="stat-src">Federal Reserve Small Business Credit Survey, 2025</div>
+    </div>
+    <div class="stat-item reveal d1">
+      <div class="stat-num">56%</div>
+      <div class="stat-label">struggle to pay operating expenses &#8212; even in profitable months</div>
+      <div class="stat-src">Federal Reserve Small Business Credit Survey, 2025</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-num">82%</div>
+      <div class="stat-label">of business failures trace back to cash flow problems &#8212; not lack of profit</div>
+      <div class="stat-src">U.S. Bank Small Business Study</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="container">
+    <div class="pain-top">
+      <div class="reveal">
+        <div class="eyebrow">The Problem</div>
+        <h2 class="pain-headline">Revenue isn&#39;t<br>the problem.<br><em>Timing is.</em></h2>
+      </div>
+      <p class="pain-intro reveal d1">Most small business owners are running on gut feel and monthly bank statements. That&#39;s not financial management &#8212; it&#39;s a slow leak. The gap between what your books say and what your bank shows has specific, identifiable causes. We find them.</p>
+    </div>
+    <div class="pain-cards reveal d2">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <div class="pain-title">The Best-Month-Ever Trap</div>
+        <div class="pain-body">You had your highest revenue month on record &#8212; and still bounced a payment. The gap between profit and cash is invisible until it isn&#39;t.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <div class="pain-title">Paying Everyone Except Yourself</div>
+        <div class="pain-body">Vendors paid, payroll on time, rent covered. But you haven&#39;t taken a draw in three months. That&#39;s survival mode, not management.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <div class="pain-title">Flying Blind Into Next Month</div>
+        <div class="pain-body">Decisions about next month made on last month&#39;s data. By the time a cash problem is visible in your bank balance, you&#39;re already in it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="deliver-section">
+  <div class="container">
+    <div class="deliver-top">
+      <div class="deliver-sticky reveal">
+        <div class="sec-ey">What You Receive</div>
+        <h2 class="deliver-head">Everything you need. Nothing you don&#39;t.</h2>
+        <p class="deliver-intro">A complete financial clarity package built by a senior finance professional. Delivered to your inbox in 48 hours.</p>
+        <div class="price-pill">
+          <div class="price-big">$297</div>
+          <div class="price-label">Founding rate<br>48-hour delivery</div>
+        </div>
+      </div>
+      <div class="deliver-grid reveal d1">
+        <div class="d-item">
+          <div class="d-tag">Core &#8212; 01</div>
+          <div class="d-title">13-Week Cash Flow Forecast</div>
+          <div class="d-desc">A rolling 90-day view of your cash position built from your actual numbers. Know exactly when you&#39;ll be tight &#8212; before it happens.</div>
+        </div>
+        <div class="d-item">
+          <div class="d-tag">Core &#8212; 02</div>
+          <div class="d-title">Profit vs. Cash Reconciliation</div>
+          <div class="d-desc">A plain-English explanation of exactly why your profit and bank balance don&#39;t match. Most owners have never seen this.</div>
+        </div>
+        <div class="d-item">
+          <div class="d-tag">Core &#8212; 03</div>
+          <div class="d-title">Cash Gap Diagnosis</div>
+          <div class="d-desc">We identify the specific 1&#8211;3 root causes of your cash timing problem &#8212; AR lag, inventory buildup, seasonal cliffs, or payment mismatches.</div>
+        </div>
+        <div class="d-item">
+          <div class="d-tag">Core &#8212; 04</div>
+          <div class="d-title">30 / 60 / 90 Day Action Plan</div>
+          <div class="d-desc">Prioritized, plain-English steps tailored to your gaps. Not generic advice &#8212; your business, your numbers, your next moves.</div>
+        </div>
+        <div class="d-item bonus">
+          <div class="d-tag bt">Bonus &#8212; 05</div>
+          <div class="d-title">Cash Runway Stress Test</div>
+          <div class="d-desc">What happens if revenue drops 20%? If a big client pays 60 days late? We model your downside so you&#39;re never caught off guard.</div>
+        </div>
+        <div class="d-item bonus">
+          <div class="d-tag bt">Bonus &#8212; 06</div>
+          <div class="d-title">30-Day Follow-Up Q&amp;A</div>
+          <div class="d-desc">Email access for 30 days to ask questions as you implement. Your senior finance advisor &#8212; without the $300/hr retainer.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="how">
+  <div class="container">
+    <div class="sec-ey reveal">How It Works</div>
+    <h2 class="proc-head reveal d1">Simple process.<br>Zero calls required.</h2>
+    <div class="proc-steps reveal d2">
+      <div class="proc-step">
+        <div class="proc-num">01</div>
+        <div class="proc-title">Pay &amp; Receive Intake Form</div>
+        <div class="proc-body">Secure checkout via Stripe. You immediately receive our 15-minute intake questionnaire about your business and cash pain points.</div>
+        <span class="proc-badge">5 minutes</span>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">02</div>
+        <div class="proc-title">Submit Your Numbers</div>
+        <div class="proc-body">Upload 3&#8211;6 months of bank statements or a basic P&amp;L. No perfect books required &#8212; we work with what real businesses have.</div>
+        <span class="proc-badge">10&#8211;15 minutes</span>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">03</div>
+        <div class="proc-title">We Build Your Report</div>
+        <div class="proc-body">A senior finance professional analyzes your data and builds your complete clarity package &#8212; hand-reviewed before delivery.</div>
+        <span class="proc-badge">Within 48 hours</span>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">04</div>
+        <div class="proc-title">Clarity in Your Inbox</div>
+        <div class="proc-body">Receive your PDF report. Read it in 20 minutes. Know exactly where your cash goes, why, and precisely what to do next.</div>
+        <span class="proc-badge">Immediate value</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER OFFER -->
+<section class="offer-section">
+  <div class="container">
+    <div class="offer-inner reveal">
+      <div>
+        <div class="offer-ey">Founding Client Pricing</div>
+        <h2 class="offer-headline">First 10 clients get the full report for $297.</h2>
+        <p class="offer-body">We&#39;re in our launch month. The first 10 clients receive the complete Cash Flow Clarity Report &#8212; every deliverable, the guarantee, 30 days of Q&amp;A &#8212; at $297 instead of $500. Same product. No corners cut. After 10, the price goes to $500 permanently.</p>
+        <div class="offer-slots"><div class="slot-dot"></div>7 of 10 founding spots remaining</div>
+      </div>
+      <div class="offer-cta-wrap">
+        <a href="YOUR_STRIPE_LINK" class="btn-white">Claim Founding Rate &#8212; $297</a>
+        <div class="offer-note">Full $500 price after 10 clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section">
+  <div class="container">
+    <div class="g-inner reveal">
+      <div class="g-seal">
+        <div class="g-pct">100%</div>
+        <div class="g-word">Satisfaction<br>Guaranteed</div>
+      </div>
+      <div>
+        <h3 class="g-title">If it isn&#39;t useful, you don&#39;t pay.</h3>
+        <p class="g-body">Read your report. If you don&#39;t find at least one specific, actionable insight you hadn&#39;t considered before &#8212; email us within 7 days for a full refund. No questions, no forms, no hassle. We&#39;re confident enough to stand fully behind it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="sec-ey reveal">Pricing</div>
+    <h2 class="pricing-head reveal d1">Choose your level of clarity.</h2>
+    <div class="pricing-grid reveal d2">
+      <!-- Snapshot -->
+      <div class="p-tier">
+        <span class="t-badge b-start">Cash Snapshot</span>
+        <div class="t-name">The Snapshot</div>
+        <div class="t-tag">Know where you stand. Fast.</div>
+        <div class="t-price"><span class="t-cur">$</span><span class="t-num">297</span><span class="t-period">one-time</span></div>
+        <ul class="t-list">
+          <li><span class="chk">&#10003;</span>13-week cash flow forecast</li>
+          <li><span class="chk">&#10003;</span>Profit vs. cash reconciliation</li>
+          <li><span class="chk">&#10003;</span>Top cash gap identified (#1 driver)</li>
+          <li><span class="chk-x">&#8211;</span><span class="xt">Full root cause diagnosis (all 3)</span></li>
+          <li><span class="chk-x">&#8211;</span><span class="xt">30/60/90 day action plan</span></li>
+          <li><span class="chk-x">&#8211;</span><span class="xt">Stress test &amp; email Q&amp;A</span></li>
+        </ul>
+        <a href="YOUR_STRIPE_LINK" class="t-btn tb-ghost">Get the Snapshot &#8594;</a>
+      </div>
+      <!-- Clarity Featured -->
+      <div class="p-tier featured">
+        <span class="t-badge b-rec">Most Popular</span>
+        <div class="t-name">Cash Flow Clarity</div>
+        <div class="t-tag">Know where you stand, why you got there, and exactly what to do next.</div>
+        <div class="t-price"><span class="t-cur gold">$</span><span class="t-num gold">500</span><span class="t-period">one-time</span></div>
+        <ul class="t-list">
+          <li><span class="chk">&#10003;</span>13-week cash flow forecast</li>
+          <li><span class="chk">&#10003;</span>Profit vs. cash reconciliation</li>
+          <li><span class="chk">&#10003;</span>Full root cause diagnosis (all 3 drivers)</li>
+          <li><span class="chk">&#10003;</span>30/60/90 day action plan</li>
+          <li><span class="chk">&#10003;</span>Cash runway stress test</li>
+          <li><span class="chk">&#10003;</span>30-day email Q&amp;A support</li>
+          <li><span class="chk-g">&#10003;</span>100% satisfaction guarantee</li>
+        </ul>
+        <a href="YOUR_STRIPE_LINK" class="t-btn tb-green">Get Clarity Report &#8594;</a>
+      </div>
+      <!-- CFO Package -->
+      <div class="p-tier">
+        <span class="t-badge b-prem">CFO Package</span>
+        <div class="t-name">The CFO Package</div>
+        <div class="t-tag">Everything in Clarity &#8212; plus a live debrief and extended support.</div>
+        <div class="t-price"><span class="t-cur">$</span><span class="t-num">900</span><span class="t-period">one-time</span></div>
+        <ul class="t-list">
+          <li><span class="chk">&#10003;</span>Everything in Clarity Report</li>
+          <li><span class="chk">&#10003;</span>30-minute live debrief call</li>
+          <li><span class="chk">&#10003;</span>Priority 24-hour delivery</li>
+          <li><span class="chk">&#10003;</span>60-day email Q&amp;A support</li>
+          <li><span class="chk">&#10003;</span>Editable forecast spreadsheet</li>
+          <li><span class="chk-g">&#10003;</span>100% satisfaction guarantee</li>
+        </ul>
+        <a href="YOUR_STRIPE_LINK" class="t-btn tb-gold">Get CFO Package &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-section">
+  <div class="final-bg">$</div>
+  <div class="container">
+    <div class="final-inner reveal">
+      <div class="sec-ey">Ready?</div>
+      <h2 class="final-headline">Stop guessing<br>where the money<br><em>went.</em></h2>
+      <p class="final-sub">You built something real. You deserve to understand the finances behind it. Forty-eight hours from now you could have complete clarity on your cash &#8212; and a specific plan to fix it.</p>
+      <div class="final-actions">
+        <a href="YOUR_STRIPE_LINK" class="btn-primary" style="font-size:1rem;padding:18px 44px;">
+          Get My Clarity Report
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="trust-list">
+          <div class="trust-item"><span class="trust-mark">&#10003;</span><span>48-hour delivery</span></div>
+          <div class="trust-item"><span class="trust-mark">&#10003;</span><span>100% satisfaction guarantee</span></div>
+          <div class="trust-item"><span class="trust-mark">&#10003;</span><span>20 years of finance expertise</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">CashFlow Clarity&#x2122;</div>
+    <div class="footer-sub">San Antonio, TX</div>
+  </div>
+  <div class="footer-legal">
+    This is a financial document preparation service. Not a licensed financial advisor, CPA, broker, or registered investment advisor. All analysis is based on owner-provided information. Results vary by business.
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(e => {
+  e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); }});
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
