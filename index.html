@@ -6,202 +6,215 @@
 <title>Cash Flow Clarity — Know Exactly Where Your Money Goes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-/* PASTE YOUR STRIPE LINK: find YOUR_STRIPE_LINK and replace */
 :root {
   --paper:#F6F1E8; --cream:#EDE7D9; --cream-dark:#E2D9C8;
   --ink:#0C0C0A; --ink-soft:#1A1A18;
   --green:#1B6642; --green-light:#2E8A59; --green-mist:#D2E8D9; --green-pale:#EAF3ED;
   --gold:#B8922A; --gold-light:#D4AE4E; --gold-pale:#F5EDD6;
   --muted:#5C5448; --rule:#C9BFA8; --rule-light:#DDD6C6;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'DM Sans',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Plus Jakarta Sans',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
-.container{max-width:1160px;margin:0 auto;padding:0 60px;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.container{max-width:1140px;margin:0 auto;padding:0 56px;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
 .reveal.visible{opacity:1;transform:none;}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
 /* ── Topbar ── */
-.topbar{position:sticky;top:0;z-index:100;background:rgba(246,241,232,.96);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
-.topbar-inner{max-width:1160px;margin:0 auto;padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between;}
-.brand-name{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--green);letter-spacing:-.02em;}
-.brand-tag{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-top:1px;}
-.nav-right{display:flex;align-items:center;gap:28px;}
-.nav-link{font-size:.82rem;font-weight:500;color:var(--muted);transition:color .15s;}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(246,241,232,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
+.topbar-inner{max-width:1140px;margin:0 auto;padding:0 56px;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.brand-name{font-family:var(--serif);font-size:1.3rem;color:var(--green);letter-spacing:-.01em;}
+.brand-tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:block;margin-top:2px;}
+.nav-right{display:flex;align-items:center;gap:32px;}
+.nav-link{font-size:15px;font-weight:500;color:var(--muted);transition:color .15s;}
 .nav-link:hover{color:var(--ink);}
-.nav-cta{background:var(--green);color:#fff;padding:10px 22px;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;}
+.nav-cta{background:var(--green);color:#fff;padding:11px 24px;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;transition:background .2s;}
 .nav-cta:hover{background:var(--green-light);}
-/* ── Btn ── */
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:17px 36px;font-family:var(--sans);font-size:.9rem;font-weight:600;letter-spacing:.04em;border:none;cursor:pointer;transition:background .2s,transform .15s;}
+
+/* ── Buttons ── */
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:18px 40px;font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:.02em;border:none;cursor:pointer;transition:background .2s,transform .15s;}
 .btn-primary:hover{background:var(--green-light);transform:translateY(-2px);}
+.btn-white{background:#fff;color:var(--green);padding:18px 40px;font-family:var(--sans);font-size:16px;font-weight:600;white-space:nowrap;border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-block;}
+.btn-white:hover{background:var(--cream);transform:translateY(-2px);}
+
 /* ── Eyebrow ── */
-.eyebrow{display:flex;align-items:center;gap:12px;font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
-.eyebrow::after{content:'';width:48px;height:1px;background:var(--gold);}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;}
+.eyebrow::after{content:'';width:44px;height:1.5px;background:var(--gold);}
+
 /* ── Hero ── */
-.hero{display:grid;grid-template-columns:55fr 45fr;min-height:calc(100vh - 64px);border-bottom:1px solid var(--rule);}
-.hero-left{padding:96px 60px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--rule);position:relative;overflow:hidden;}
-.hero-bg{position:absolute;bottom:-40px;left:40px;font-family:var(--serif);font-size:380px;font-weight:700;color:#E8E2D6;line-height:1;pointer-events:none;user-select:none;z-index:0;}
-.hero-content{position:relative;z-index:1;}
-.hero-headline{font-family:var(--serif);font-size:clamp(3rem,5vw,4.6rem);font-weight:700;line-height:1.02;letter-spacing:-.03em;margin-bottom:6px;}
-.h-plain{color:var(--ink);}
-.h-accent{color:var(--green);font-style:italic;}
-.hero-rule{width:56px;height:3px;background:var(--gold);margin:28px 0;}
-.hero-sub{font-size:1.08rem;color:var(--muted);max-width:460px;font-weight:300;line-height:1.8;margin-bottom:40px;}
-.hero-sub strong{color:var(--ink);font-weight:500;}
-.proof{display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--muted);margin-top:12px;}
+.hero{display:grid;grid-template-columns:55fr 45fr;min-height:calc(100vh - 68px);border-bottom:1px solid var(--rule);}
+.hero-left{padding:80px 60px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--rule);}
+.hero-headline{font-family:var(--serif);font-size:clamp(3rem,4.4vw,4.6rem);line-height:1.06;letter-spacing:-.02em;margin-bottom:10px;}
+.hero-headline .h-plain{color:var(--ink);}
+.hero-headline .h-accent{color:var(--green);font-style:italic;display:block;}
+.hero-rule{width:52px;height:3px;background:var(--gold);margin:30px 0;}
+.hero-sub{font-size:20px;color:var(--muted);max-width:500px;font-weight:300;line-height:1.8;margin-bottom:44px;}
+.hero-sub strong{color:var(--ink);font-weight:600;}
+.hero-proof{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted);margin-top:16px;}
 .proof-dot{width:4px;height:4px;border-radius:50%;background:var(--rule);}
 .hero-right{background:var(--cream);padding:80px 56px;display:flex;flex-direction:column;justify-content:center;}
-.stat-item{padding:32px 0;border-bottom:1px solid var(--rule);}
+.stat-item{padding:34px 0;border-bottom:1px solid var(--rule);}
 .stat-item:first-child{padding-top:0;}
 .stat-item:last-child{border-bottom:none;padding-bottom:0;}
-.stat-num{font-family:var(--serif);font-size:4.2rem;font-weight:700;color:var(--green);line-height:1;letter-spacing:-.04em;margin-bottom:8px;}
-.stat-label{font-size:.86rem;color:var(--muted);line-height:1.6;}
-.stat-src{font-size:.67rem;color:var(--rule);margin-top:5px;font-style:italic;}
+.stat-num{font-family:var(--serif);font-size:4.8rem;color:var(--green);line-height:1;margin-bottom:10px;}
+.stat-label{font-size:17px;color:var(--muted);line-height:1.65;}
+.stat-src{font-size:12px;color:var(--rule);margin-top:6px;font-style:italic;}
+
 /* ── Pain ── */
 .pain-section{background:var(--ink-soft);color:#F0EBE0;padding:100px 0;}
 .pain-section .eyebrow{color:var(--gold-light);}
 .pain-section .eyebrow::after{background:var(--gold-light);}
 .pain-top{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;margin-bottom:64px;}
-.pain-headline{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.4rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;}
+.pain-headline{font-family:var(--serif);font-size:clamp(2.2rem,3.2vw,3.4rem);line-height:1.1;color:#F0EBE0;}
 .pain-headline em{color:var(--gold-light);font-style:italic;}
-.pain-intro{font-size:.95rem;color:#7A7268;line-height:1.85;font-weight:300;}
-.pain-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#2A2A26;}
-.pain-card{background:#161614;padding:40px 32px;transition:background .2s;}
+.pain-intro{font-size:18px;color:#7A7268;line-height:1.85;font-weight:300;}
+.pain-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#252522;}
+.pain-card{background:#161614;padding:44px 34px;transition:background .2s;}
 .pain-card:hover{background:#1C1C1A;}
-.pain-num{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:#2A2A26;line-height:1;margin-bottom:16px;}
-.pain-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#F0EBE0;margin-bottom:12px;line-height:1.3;}
-.pain-body{font-size:.86rem;color:#6A6258;line-height:1.75;}
+.pain-num{font-family:var(--serif);font-size:3rem;color:#252522;line-height:1;margin-bottom:16px;}
+.pain-title{font-family:var(--serif);font-size:1.35rem;color:#F0EBE0;margin-bottom:14px;line-height:1.3;}
+.pain-body{font-size:16px;color:#686058;line-height:1.8;}
+
 /* ── Deliverables ── */
 .deliver-section{padding:100px 0;border-bottom:1px solid var(--rule);}
 .deliver-top{display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:start;}
-.deliver-sticky{position:sticky;top:80px;}
-.sec-ey{display:flex;align-items:center;gap:12px;font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
-.sec-ey::after{content:'';width:48px;height:1px;background:var(--gold);}
-.deliver-head{font-family:var(--serif);font-size:clamp(1.7rem,2.5vw,2.4rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:18px;}
-.deliver-intro{font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:28px;}
-.price-pill{display:inline-flex;align-items:center;gap:12px;background:var(--green-pale);border:1px solid var(--green-mist);padding:12px 18px;}
-.price-big{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:var(--green);line-height:1;}
-.price-label{font-size:.72rem;color:var(--muted);line-height:1.4;}
+.deliver-sticky{position:sticky;top:88px;}
+.sec-ey{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;}
+.sec-ey::after{content:'';width:44px;height:1.5px;background:var(--gold);}
+.deliver-head{font-family:var(--serif);font-size:clamp(1.8rem,2.4vw,2.6rem);line-height:1.1;margin-bottom:20px;}
+.deliver-intro{font-size:18px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:30px;}
+.price-pill{display:inline-flex;align-items:center;gap:14px;background:var(--green-pale);border:1px solid var(--green-mist);padding:14px 22px;}
+.price-big{font-family:var(--serif);font-size:2.1rem;color:var(--green);line-height:1;}
+.price-label{font-size:14px;color:var(--muted);line-height:1.5;}
 .deliver-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule-light);}
 .d-item{background:var(--paper);padding:32px 28px;border-top:3px solid transparent;transition:border-color .2s,background .2s;}
 .d-item:hover{border-top-color:var(--green);background:var(--cream);}
 .d-item.bonus{background:var(--gold-pale);}
 .d-item.bonus:hover{border-top-color:var(--gold);}
-.d-tag{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.d-tag{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
 .d-tag.bt{color:var(--gold);}
-.d-title{font-family:var(--serif);font-size:1.2rem;font-weight:700;margin-bottom:8px;line-height:1.2;}
-.d-desc{font-size:.83rem;color:var(--muted);line-height:1.7;}
+.d-title{font-family:var(--serif);font-size:1.25rem;margin-bottom:10px;line-height:1.25;}
+.d-desc{font-size:16px;color:var(--muted);line-height:1.75;}
+
 /* ── Process ── */
 .process-section{background:var(--cream);padding:100px 0;border-bottom:1px solid var(--rule);}
-.proc-head{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;max-width:500px;margin-bottom:48px;}
+.proc-head{font-family:var(--serif);font-size:clamp(1.8rem,2.4vw,2.6rem);line-height:1.1;max-width:520px;margin-bottom:48px;}
 .proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--rule);border:1px solid var(--rule);}
 .proc-step{background:var(--cream);padding:40px 28px;transition:background .2s;}
 .proc-step:hover{background:var(--paper);}
-.proc-num{font-family:var(--serif);font-size:4.5rem;font-weight:700;color:var(--rule);line-height:1;margin-bottom:18px;}
-.proc-title{font-size:.92rem;font-weight:600;margin-bottom:8px;}
-.proc-body{font-size:.82rem;color:var(--muted);line-height:1.7;}
-.proc-badge{display:inline-block;margin-top:16px;font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);background:var(--green-mist);padding:4px 10px;}
+.proc-num{font-family:var(--serif);font-size:4.8rem;color:var(--rule);line-height:1;margin-bottom:18px;}
+.proc-title{font-size:16px;font-weight:600;margin-bottom:10px;}
+.proc-body{font-size:15px;color:var(--muted);line-height:1.75;}
+.proc-badge{display:inline-block;margin-top:16px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);background:var(--green-mist);padding:5px 12px;}
+
 /* ── Offer ── */
-.offer-section{background:var(--green);color:#fff;padding:72px 0;}
+.offer-section{background:var(--green);color:#fff;padding:76px 0;}
 .offer-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:72px;}
-.offer-ey{font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:14px;}
-.offer-headline{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:14px;}
-.offer-body{font-size:.92rem;color:rgba(255,255,255,.68);line-height:1.8;max-width:540px;font-weight:300;}
-.offer-slots{display:flex;align-items:center;gap:8px;color:var(--gold-light);font-size:.8rem;font-weight:500;margin-top:20px;}
+.offer-ey{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:16px;}
+.offer-headline{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.8rem);line-height:1.1;margin-bottom:16px;}
+.offer-body{font-size:18px;color:rgba(255,255,255,.68);line-height:1.8;max-width:540px;font-weight:300;}
+.offer-slots{display:flex;align-items:center;gap:9px;color:var(--gold-light);font-size:15px;font-weight:500;margin-top:20px;}
 .slot-dot{width:7px;height:7px;border-radius:50%;background:var(--gold-light);}
-.offer-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0;}
-.btn-white{background:#fff;color:var(--green);padding:18px 36px;font-family:var(--sans);font-size:.95rem;font-weight:600;white-space:nowrap;border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-block;}
-.btn-white:hover{background:var(--cream);transform:translateY(-2px);}
-.offer-note{font-size:.73rem;color:rgba(255,255,255,.45);}
+.offer-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;flex-shrink:0;}
+.offer-note{font-size:13px;color:rgba(255,255,255,.45);}
+
 /* ── Guarantee ── */
 .guarantee-section{padding:96px 0;border-bottom:1px solid var(--rule);}
-.g-inner{display:grid;grid-template-columns:160px 1fr;gap:56px;align-items:center;max-width:780px;margin:0 auto;}
-.g-seal{width:150px;height:150px;border-radius:50%;border:2.5px solid var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex-shrink:0;position:relative;}
+.g-inner{display:grid;grid-template-columns:168px 1fr;gap:56px;align-items:center;max-width:800px;margin:0 auto;}
+.g-seal{width:156px;height:156px;border-radius:50%;border:2.5px solid var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex-shrink:0;position:relative;}
 .g-seal::before{content:'';position:absolute;inset:6px;border-radius:50%;border:1px solid var(--green-mist);}
-.g-pct{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--green);line-height:1;}
-.g-word{font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px;line-height:1.4;}
-.g-title{font-family:var(--serif);font-size:1.9rem;font-weight:700;margin-bottom:12px;letter-spacing:-.02em;}
-.g-body{font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:300;}
+.g-pct{font-family:var(--serif);font-size:2.2rem;color:var(--green);line-height:1;}
+.g-word{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:5px;line-height:1.4;}
+.g-title{font-family:var(--serif);font-size:2.1rem;margin-bottom:14px;}
+.g-body{font-size:18px;color:var(--muted);line-height:1.8;font-weight:300;}
+
 /* ── Pricing ── */
 .pricing-section{background:var(--ink-soft);color:#F0EBE0;padding:100px 0;}
 .pricing-section .sec-ey{color:var(--gold-light);}
 .pricing-section .sec-ey::after{background:var(--gold-light);}
-.pricing-head{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;letter-spacing:-.025em;margin-bottom:48px;}
+.pricing-head{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.8rem);margin-bottom:52px;}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#2A2A26;border:1px solid #2A2A26;}
-.p-tier{background:#161614;padding:44px 32px;display:flex;flex-direction:column;transition:background .2s;}
+.p-tier{background:#161614;padding:48px 36px;display:flex;flex-direction:column;transition:background .2s;}
 .p-tier:hover{background:#1C1C1A;}
 .p-tier.featured{background:#1A1A18;border:1px solid var(--gold);margin:-1px;position:relative;z-index:1;}
-.t-badge{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;margin-bottom:18px;align-self:flex-start;}
+.t-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;margin-bottom:20px;align-self:flex-start;}
 .b-rec{background:var(--gold);color:var(--ink);}
 .b-start{background:#2A2A26;color:#6A6258;}
 .b-prem{background:#1E3828;color:var(--green-light);}
-.t-name{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:#F0EBE0;margin-bottom:6px;}
-.t-tag{font-size:.8rem;color:#5A5248;margin-bottom:24px;line-height:1.5;}
-.t-price{display:flex;align-items:baseline;gap:2px;margin-bottom:28px;}
-.t-cur{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#F0EBE0;}
-.t-num{font-family:var(--serif);font-size:3.8rem;font-weight:700;color:#F0EBE0;line-height:1;letter-spacing:-.04em;}
+.t-name{font-family:var(--serif);font-size:1.5rem;color:#F0EBE0;margin-bottom:8px;}
+.t-tag{font-size:15px;color:#5A5248;margin-bottom:26px;line-height:1.6;}
+.t-price{display:flex;align-items:baseline;gap:2px;margin-bottom:30px;}
+.t-cur{font-family:var(--serif);font-size:1.6rem;color:#F0EBE0;}
+.t-num{font-family:var(--serif);font-size:4rem;color:#F0EBE0;line-height:1;letter-spacing:-.04em;}
 .t-num.gold,.t-cur.gold{color:var(--gold-light);}
-.t-period{font-size:.76rem;color:#4A4A48;margin-left:4px;}
-.t-list{list-style:none;margin-bottom:32px;flex:1;}
-.t-list li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #202020;font-size:.8rem;color:#7A7268;line-height:1.5;}
+.t-period{font-size:14px;color:#4A4A48;margin-left:6px;}
+.t-list{list-style:none;margin-bottom:36px;flex:1;}
+.t-list li{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #202020;font-size:15px;color:#7A7268;line-height:1.55;}
 .t-list li:last-child{border-bottom:none;}
 .chk{color:var(--green-light);font-weight:700;flex-shrink:0;}
 .chk-g{color:var(--gold);font-weight:700;flex-shrink:0;}
 .chk-x{color:#2A2A26;flex-shrink:0;}
 .xt{color:#2E2E2C;}
-.t-btn{display:block;padding:15px;text-align:center;font-size:.83rem;font-weight:600;letter-spacing:.04em;cursor:pointer;border:none;font-family:var(--sans);transition:all .2s;text-decoration:none;}
+.t-btn{display:block;padding:16px;text-align:center;font-size:15px;font-weight:600;letter-spacing:.04em;cursor:pointer;border:none;font-family:var(--sans);transition:all .2s;text-decoration:none;}
 .tb-green{background:var(--green);color:#fff;}
 .tb-green:hover{background:var(--green-light);}
 .tb-ghost{background:transparent;color:#4A4A48;border:1px solid #2A2A26;}
 .tb-ghost:hover{border-color:#4A4A48;color:#7A7268;}
 .tb-gold{background:var(--gold);color:var(--ink);}
 .tb-gold:hover{background:var(--gold-light);}
+
 /* ── Final CTA ── */
 .final-section{padding:100px 0;border-bottom:1px solid var(--rule);position:relative;overflow:hidden;}
-.final-bg{position:absolute;right:-60px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:380px;font-weight:700;color:#E8E2D6;line-height:1;pointer-events:none;user-select:none;z-index:0;}
-.final-inner{position:relative;z-index:1;max-width:680px;}
-.final-headline{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px;}
+.final-bg{position:absolute;right:-60px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:380px;color:#E8E2D6;line-height:1;pointer-events:none;user-select:none;z-index:0;}
+.final-inner{position:relative;z-index:1;max-width:700px;}
+.final-headline{font-family:var(--serif);font-size:clamp(2.6rem,5vw,4.4rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:22px;}
 .final-headline em{color:var(--green);font-style:italic;}
-.final-sub{font-size:.98rem;color:var(--muted);font-weight:300;line-height:1.8;max-width:500px;margin-bottom:40px;}
-.final-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
-.trust-list{display:flex;flex-direction:column;gap:5px;}
-.trust-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);}
-.trust-mark{color:var(--green);}
+.final-sub{font-size:19px;color:var(--muted);font-weight:300;line-height:1.8;max-width:520px;margin-bottom:44px;}
+.final-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.trust-list{display:flex;flex-direction:column;gap:7px;}
+.trust-item{display:flex;align-items:center;gap:9px;font-size:15px;color:var(--muted);}
+.trust-mark{color:var(--green);font-size:16px;}
+
 /* ── Footer ── */
-footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
-.footer-brand{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--green);}
-.footer-sub{font-size:.7rem;color:#9A9080;margin-top:3px;}
-.footer-legal{font-size:.7rem;color:#9A9080;max-width:500px;text-align:right;line-height:1.6;}
+footer{padding:44px 56px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.footer-brand{font-family:var(--serif);font-size:1.15rem;color:var(--green);}
+.footer-sub{font-size:12px;color:#9A9080;margin-top:3px;}
+.footer-legal{font-size:13px;color:#9A9080;max-width:500px;text-align:right;line-height:1.7;}
+
 /* ── Responsive ── */
 @media(max-width:1024px){
-  .container,.topbar-inner{padding:0 32px;}
-  footer{padding:32px;}
+  .container,.topbar-inner{padding:0 36px;}
+  footer{padding:36px;}
   .hero{grid-template-columns:1fr;min-height:auto;}
-  .hero-left{border-right:none;border-bottom:1px solid var(--rule);padding:64px 32px;}
-  .hero-right{padding:48px 32px;}
-  .hero-bg{display:none;}
-  .pain-top{grid-template-columns:1fr;gap:28px;}
+  .hero-left{border-right:none;border-bottom:1px solid var(--rule);padding:72px 36px;}
+  .hero-right{padding:56px 36px;}
+  .pain-top{grid-template-columns:1fr;gap:32px;}
   .pain-cards{grid-template-columns:1fr;}
   .deliver-top{grid-template-columns:1fr;}
   .deliver-sticky{position:static;}
   .deliver-grid{grid-template-columns:1fr;}
   .proc-steps{grid-template-columns:1fr 1fr;}
-  .offer-inner{grid-template-columns:1fr;gap:32px;}
+  .offer-inner{grid-template-columns:1fr;gap:40px;}
   .g-inner{grid-template-columns:1fr;text-align:center;justify-items:center;}
   .pricing-grid{grid-template-columns:1fr;}
   .p-tier.featured{margin:0;}
   .final-bg{display:none;}
-  footer{flex-direction:column;gap:16px;text-align:center;}
+  footer{flex-direction:column;gap:18px;text-align:center;}
   .footer-legal{text-align:center;}
   .nav-link{display:none;}
 }
 @media(max-width:640px){
+  .container,.topbar-inner{padding:0 22px;}
+  .hero-left{padding:56px 22px;}
+  .hero-right{padding:44px 22px;}
   .hero-headline{font-size:2.6rem;}
+  .hero-sub{font-size:17px;}
   .proc-steps{grid-template-columns:1fr;}
   .final-actions{flex-direction:column;align-items:flex-start;}
 }
@@ -209,7 +222,6 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
 </head>
 <body>
 
-<!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-inner">
     <div>
@@ -224,32 +236,26 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-bg">&#162;</div>
-    <div class="hero-content">
-      <div class="eyebrow reveal">For Small Business Owners</div>
-      <h1 class="hero-headline reveal">
-        <span class="h-plain">Profitable</span><br>
-        <span class="h-plain">on paper.</span><br>
-        <span class="h-accent">Broke in your</span><br>
-        <span class="h-accent">bank account.</span>
-      </h1>
-      <div class="hero-rule reveal d1"></div>
-      <p class="hero-sub reveal d2">
-        Most small business owners can&#39;t explain why cash runs thin even when revenue is up. We deliver a <strong>complete cash flow analysis</strong> &#8212; 48 hours, $297 founding rate, money-back guarantee.
-      </p>
-      <div class="reveal d3">
-        <a href="YOUR_STRIPE_LINK" class="btn-primary">
-          Get My Clarity Report
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <div class="proof">
-          <span>48-hour delivery</span><div class="proof-dot"></div>
-          <span>100% guarantee</span><div class="proof-dot"></div>
-          <span>Founding rate &#8212; $297</span>
-        </div>
+    <div class="eyebrow reveal">For Small Business Owners</div>
+    <h1 class="hero-headline reveal">
+      <span class="h-plain">Profitable on paper.</span>
+      <span class="h-accent">Broke in your bank account.</span>
+    </h1>
+    <div class="hero-rule reveal d1"></div>
+    <p class="hero-sub reveal d2">
+      Most small business owners can&#39;t explain why cash runs thin even when revenue is up. We deliver a <strong>complete cash flow analysis</strong> &#8212; 48 hours, $297 founding rate, money-back guarantee.
+    </p>
+    <div class="reveal d3">
+      <a href="YOUR_STRIPE_LINK" class="btn-primary">
+        Get My Clarity Report
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="width:16px;height:16px;"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="hero-proof">
+        <span>48-hour delivery</span><div class="proof-dot"></div>
+        <span>100% guarantee</span><div class="proof-dot"></div>
+        <span>Founding rate &#8212; $297</span>
       </div>
     </div>
   </div>
@@ -272,7 +278,6 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
   </div>
 </section>
 
-<!-- PAIN -->
 <section class="pain-section">
   <div class="container">
     <div class="pain-top">
@@ -296,13 +301,12 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
       <div class="pain-card">
         <div class="pain-num">03</div>
         <div class="pain-title">Flying Blind Into Next Month</div>
-        <div class="pain-body">Decisions about next month made on last month&#39;s data. By the time a cash problem is visible in your bank balance, you&#39;re already in it.</div>
+        <div class="pain-body">By the time a cash problem appears in your bank balance, you&#39;re already in it. No visibility means no time to act.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DELIVERABLES -->
 <section class="deliver-section">
   <div class="container">
     <div class="deliver-top">
@@ -319,7 +323,7 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
         <div class="d-item">
           <div class="d-tag">Core &#8212; 01</div>
           <div class="d-title">13-Week Cash Flow Forecast</div>
-          <div class="d-desc">A rolling 90-day view of your cash position built from your actual numbers. Know exactly when you&#39;ll be tight &#8212; before it happens.</div>
+          <div class="d-desc">A rolling 90-day view of your cash built from your actual numbers. Know exactly when you&#39;ll be tight &#8212; before it happens.</div>
         </div>
         <div class="d-item">
           <div class="d-tag">Core &#8212; 02</div>
@@ -329,29 +333,28 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
         <div class="d-item">
           <div class="d-tag">Core &#8212; 03</div>
           <div class="d-title">Cash Gap Diagnosis</div>
-          <div class="d-desc">We identify the specific 1&#8211;3 root causes of your cash timing problem &#8212; AR lag, inventory buildup, seasonal cliffs, or payment mismatches.</div>
+          <div class="d-desc">We identify the specific 1&#8211;3 root causes &#8212; AR lag, inventory buildup, seasonal cliffs, or payment term mismatches.</div>
         </div>
         <div class="d-item">
           <div class="d-tag">Core &#8212; 04</div>
           <div class="d-title">30 / 60 / 90 Day Action Plan</div>
-          <div class="d-desc">Prioritized, plain-English steps tailored to your gaps. Not generic advice &#8212; your business, your numbers, your next moves.</div>
+          <div class="d-desc">Prioritized, plain-English steps tailored to your gaps. Your business, your numbers, your next moves.</div>
         </div>
         <div class="d-item bonus">
           <div class="d-tag bt">Bonus &#8212; 05</div>
           <div class="d-title">Cash Runway Stress Test</div>
-          <div class="d-desc">What happens if revenue drops 20%? If a big client pays 60 days late? We model your downside so you&#39;re never caught off guard.</div>
+          <div class="d-desc">What if revenue drops 20%? We model your downside so you&#39;re never caught off guard by a bad month.</div>
         </div>
         <div class="d-item bonus">
           <div class="d-tag bt">Bonus &#8212; 06</div>
           <div class="d-title">30-Day Follow-Up Q&amp;A</div>
-          <div class="d-desc">Email access for 30 days to ask questions as you implement. Your senior finance advisor &#8212; without the $300/hr retainer.</div>
+          <div class="d-desc">Email access for 30 days as you implement. Your senior finance advisor &#8212; without the $300/hr retainer.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
 <section class="process-section" id="how">
   <div class="container">
     <div class="sec-ey reveal">How It Works</div>
@@ -360,7 +363,7 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
       <div class="proc-step">
         <div class="proc-num">01</div>
         <div class="proc-title">Pay &amp; Receive Intake Form</div>
-        <div class="proc-body">Secure checkout via Stripe. You immediately receive our 15-minute intake questionnaire about your business and cash pain points.</div>
+        <div class="proc-body">Secure Stripe checkout. You immediately receive our 15-minute intake questionnaire about your business and cash situation.</div>
         <span class="proc-badge">5 minutes</span>
       </div>
       <div class="proc-step">
@@ -378,14 +381,13 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
       <div class="proc-step">
         <div class="proc-num">04</div>
         <div class="proc-title">Clarity in Your Inbox</div>
-        <div class="proc-body">Receive your PDF report. Read it in 20 minutes. Know exactly where your cash goes, why, and precisely what to do next.</div>
+        <div class="proc-body">Receive your PDF report. Read it in 20 minutes. Know exactly where your cash goes, why, and what to do next.</div>
         <span class="proc-badge">Immediate value</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOUNDER OFFER -->
 <section class="offer-section">
   <div class="container">
     <div class="offer-inner reveal">
@@ -403,7 +405,6 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
   </div>
 </section>
 
-<!-- GUARANTEE -->
 <section class="guarantee-section">
   <div class="container">
     <div class="g-inner reveal">
@@ -413,19 +414,17 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
       </div>
       <div>
         <h3 class="g-title">If it isn&#39;t useful, you don&#39;t pay.</h3>
-        <p class="g-body">Read your report. If you don&#39;t find at least one specific, actionable insight you hadn&#39;t considered before &#8212; email us within 7 days for a full refund. No questions, no forms, no hassle. We&#39;re confident enough to stand fully behind it.</p>
+        <p class="g-body">Read your report. If you don&#39;t find at least one specific, actionable insight you hadn&#39;t considered &#8212; email us within 7 days for a full refund. No questions, no forms, no hassle. We stand fully behind every report.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
 <section class="pricing-section" id="pricing">
   <div class="container">
     <div class="sec-ey reveal">Pricing</div>
     <h2 class="pricing-head reveal d1">Choose your level of clarity.</h2>
     <div class="pricing-grid reveal d2">
-      <!-- Snapshot -->
       <div class="p-tier">
         <span class="t-badge b-start">Cash Snapshot</span>
         <div class="t-name">The Snapshot</div>
@@ -441,7 +440,6 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
         </ul>
         <a href="YOUR_STRIPE_LINK" class="t-btn tb-ghost">Get the Snapshot &#8594;</a>
       </div>
-      <!-- Clarity Featured -->
       <div class="p-tier featured">
         <span class="t-badge b-rec">Most Popular</span>
         <div class="t-name">Cash Flow Clarity</div>
@@ -458,11 +456,10 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
         </ul>
         <a href="YOUR_STRIPE_LINK" class="t-btn tb-green">Get Clarity Report &#8594;</a>
       </div>
-      <!-- CFO Package -->
       <div class="p-tier">
         <span class="t-badge b-prem">CFO Package</span>
         <div class="t-name">The CFO Package</div>
-        <div class="t-tag">Everything in Clarity &#8212; plus a live debrief and extended support.</div>
+        <div class="t-tag">Everything in Clarity, plus a live debrief and extended support.</div>
         <div class="t-price"><span class="t-cur">$</span><span class="t-num">900</span><span class="t-period">one-time</span></div>
         <ul class="t-list">
           <li><span class="chk">&#10003;</span>Everything in Clarity Report</li>
@@ -478,7 +475,6 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
   </div>
 </section>
 
-<!-- FINAL CTA -->
 <section class="final-section">
   <div class="final-bg">$</div>
   <div class="container">
@@ -487,9 +483,9 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
       <h2 class="final-headline">Stop guessing<br>where the money<br><em>went.</em></h2>
       <p class="final-sub">You built something real. You deserve to understand the finances behind it. Forty-eight hours from now you could have complete clarity on your cash &#8212; and a specific plan to fix it.</p>
       <div class="final-actions">
-        <a href="YOUR_STRIPE_LINK" class="btn-primary" style="font-size:1rem;padding:18px 44px;">
+        <a href="YOUR_STRIPE_LINK" class="btn-primary" style="font-size:18px;padding:20px 48px;">
           Get My Clarity Report
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="width:16px;height:16px;"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="trust-list">
           <div class="trust-item"><span class="trust-mark">&#10003;</span><span>48-hour delivery</span></div>
@@ -501,7 +497,6 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div>
     <div class="footer-brand">CashFlow Clarity&#x2122;</div>
@@ -513,10 +508,10 @@ footer{padding:40px 60px;border-top:1px solid var(--rule);display:flex;justify-c
 </footer>
 
 <script>
-const io = new IntersectionObserver(e => {
-  e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); }});
-}, {threshold: 0.12});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+const io = new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
