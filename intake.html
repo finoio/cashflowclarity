@@ -559,6 +559,11 @@ function showSuccess(email){
   document.getElementById("progPct").textContent = "100%";
   document.getElementById("progText").textContent = "Submitted \u2014 thank you!";
   window.scrollTo({top:0,behavior:"smooth"});
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18016432640/rZaBCKfJ64gcEIDk845D',
+    'value': 297.0,
+    'currency': 'USD'
+  });
 }
 
 document.querySelectorAll("input[required],textarea[required]").forEach(el=>{
